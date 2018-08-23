@@ -74,6 +74,7 @@ public class Coche {
        }
    }
       public void configura_climatizador(String climatizador){//setter
+          
           if (climatizador.equalsIgnoreCase("si")){
               this.climatizador=true;
           }else{
@@ -99,11 +100,14 @@ public class Coche {
           peso_total=peso_plataforma+peso_carroceria;
           
           if(asientos_cuero==true){
+          
               peso_total=peso_total+50;
+              
           }
           if (climatizador==true){
           
               peso_total=peso_total+20;
+              
           }
           return "El peso del coche es: "+peso_total;
       }
@@ -112,11 +116,14 @@ public class Coche {
       
           int precio_final=10000;
           if(asientos_cuero==true){
+          
               precio_final+=2000;
+          
           }         
           if(climatizador==true){
           
               precio_final+=1500;
+          
           }
           
           return precio_final;
