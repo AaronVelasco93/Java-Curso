@@ -35,7 +35,7 @@ public class Coche {
    public String dime_datos_generales(){//getter
 
        return "La plataforma del veiculo tiene "+ruedas+" Ruedas "+
-       ".Mide "+largo/1000+" metros con un ancho de "+ancho+
+       ".Mide "+largo/1000 +" metros con un ancho de "+ancho+
        " cm y un peso de plataforma de "+peso_plataforma+" kg";       
    }
 

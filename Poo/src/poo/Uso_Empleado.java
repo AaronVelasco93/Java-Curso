@@ -41,7 +41,7 @@ public class Uso_Empleado {
        misEmpleados[2] = new  Empleado("Jona", 58000, 2013, 12, 25);
        misEmpleados[3] = new Empleado("Aaron Velasco");
        
-        System.out.println(misEmpleados[3].dameNombre());
+      
       
        
        /* for (int i=0 ; i<3;i++){//se usa una aareglo para recorrer la informacion
@@ -71,7 +71,9 @@ public class Uso_Empleado {
 }
 
 class Empleado{
+  
     
+   
     public Empleado( String nom, double sue,int agno, int mes, int dia ){//Contructor para dar estadio inicial a los objetos
          nombre=nom;
          
@@ -79,18 +81,24 @@ class Empleado{
          
          GregorianCalendar calendario = new  GregorianCalendar(agno, mes-1, dia);// metodo no un variable
          
-         altaContrato=calendario.getTime();  
+         altaContrato=calendario.getTime();
+         ++IdSiguiente;
+         Id=IdSiguiente;
+         
     
     }
     
-    public Empleado(String nom){
-        nombre=nom;
+    public Empleado(String nom){//Contructor sobrecargado
+        
+        this(nom,30000,2000,01,01);//llama a el otro constructor
+        
     
     }
     
     public String dameNombre(){//getter
     
-        return nombre;
+        //return nombre;
+        return nombre +" Id: "+Id;
     }
     
     public double dameSueldo(){//getter
@@ -115,4 +123,16 @@ class Empleado{
     private double sueldo;
     private Date altaContrato;
     
+    int Id;
+    static int IdSiguiente;
+    }
+
+class Jefatura extends Empleado{
+
+    public Jefatura() {
+        super(null);
+    
+    }
+
+   
 }
