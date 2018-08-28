@@ -34,13 +34,20 @@ public class Uso_Empleado {
        System.out.println("Nombre: "+empleado3.dameNombre()+" Sueldo: "+empleado3.dameSueldo()
         +" Fecha de alta: "+empleado3.dameFechaContrato()); */
        
-       Empleado [] misEmpleados= new Empleado[4];
+       Jefatura jefe_RRHH = new Jefatura("Felipe", 55000, 2018, 12, 21);
+       
+       jefe_RRHH.estableceIncentivo(2570);
+       
+       
+       Empleado [] misEmpleados= new Empleado[6];
        
        misEmpleados[0] = new Empleado("Aaron", 85000, 2018, 05, 12);
        misEmpleados[1] = new Empleado("Ana", 56000, 2017, 06, 02);
-       misEmpleados[2] = new  Empleado("Jona", 58000, 2013, 12, 25);
+       misEmpleados[2] = new Empleado("Jona", 58000, 2013, 12, 25);
        misEmpleados[3] = new Empleado("Aaron Velasco");
+       misEmpleados[5] = new Jefatura("Maria",95000, 1999, 5, 26);
        
+       misEmpleados[4] = jefe_RRHH;
       
       
        
@@ -88,7 +95,7 @@ class Empleado{
     
     }
     
-    public Empleado(String nom){//Contructor sobrecargado
+    public Empleado(String nom){//Contructor sobrecargado, segundo contructor
         
         this(nom,30000,2000,01,01);//llama a el otro constructor
         
@@ -129,10 +136,27 @@ class Empleado{
 
 class Jefatura extends Empleado{
 
-    public Jefatura() {
-        super(null);
+    public Jefatura(String nom, double sue, int agno, int mes, int dia) {
+        super(nom,sue,agno,mes,dia);//llama al primer constructor
     
+        
     }
+    
+    public void estableceIncentivo(double b){//setter
+        incentivo=b;
+    }
+    
+    @Override
+    public double dameSueldo() {//metodo sobrecargado
+        double sueldoJefe=super.dameSueldo();//con super usamoa el metodos de la clase padre
+        
+        return sueldoJefe+incentivo;
+    }
+    
+    private double incentivo;
+    
+   
+    
 
    
 }
