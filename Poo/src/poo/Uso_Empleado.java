@@ -5,6 +5,7 @@
  */
 package poo;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -50,14 +51,25 @@ public class Uso_Empleado {
        misEmpleados[4] = jefe_RRHH;
       
       
-       
+       Jefatura jefa_Finanzas =(Jefatura) misEmpleados[5];
+       jefa_Finanzas.estableceIncentivo(55000);
+
+        System.out.println(jefa_Finanzas.tomar_decisiones("Todos pueden descansar"));
+        
+        System.out.println("El jefe. "+jefa_Finanzas.dameNombre()+" tiene un bonus de: "+jefa_Finanzas.establece_bonus(667));
+        
+        System.out.println(misEmpleados[3].dameNombre()+" Tiene un bonus de:"+misEmpleados[3].establece_bonus(200));
+        
        /* for (int i=0 ; i<3;i++){//se usa una aareglo para recorrer la informacion
        
            misEmpleados[i].subeSueldo(i);
        }*/
+       
+        System.out.println("");
+     
         for (Empleado e: misEmpleados){//for mejorado
        
-            e.subeSueldo(5);
+            e.subeSueldo(6);
        }
        
        /*for(int i=0 ; i<3; i++ ){
@@ -65,6 +77,9 @@ public class Uso_Empleado {
             System.out.println("Dame Nombre: "+misEmpleados[i].dameNombre()+" Sueldo: "+misEmpleados[i].dameSueldo()
                     +" Dame Alta Contrato: "+misEmpleados[i].dameFechaContrato());
         }*/
+       
+       
+      Arrays.sort(misEmpleados);
        
         for (Empleado e : misEmpleados) {//for mejorado
               System.out.println("Dame Nombre: "+ e.dameNombre()+" Sueldo: "+ e.dameSueldo()
@@ -77,7 +92,7 @@ public class Uso_Empleado {
     
 }
 
-class Empleado{
+class Empleado implements Comparable, Trabajadores{
   
     
    
@@ -91,8 +106,12 @@ class Empleado{
          altaContrato=calendario.getTime();
          ++IdSiguiente;
          Id=IdSiguiente;
-         
     
+    }
+    
+    public double establece_bonus(double gratificacion){
+    
+        return Trabajadores.bonus_base+gratificacion;
     }
     
     public Empleado(String nom){//Contructor sobrecargado, segundo contructor
@@ -125,21 +144,51 @@ class Empleado{
         sueldo+=aumento;
     }
     
+    @Override
+    public int compareTo(Object miObjeto){
+        
+        Empleado otroEmpleado=(Empleado) miObjeto;
+        
+        if (this.sueldo<otroEmpleado.sueldo){
+            return -1;
+        }
+        
+        if(this.sueldo>otroEmpleado.sueldo){
+            return 1;
+        }
+        
+        return 0;
+    }
     
     private String nombre;
     private double sueldo;
     private Date altaContrato;
-    
-    int Id;
-    static int IdSiguiente;
+    private int Id;
+    static int IdSiguiente;                                              
     }
 
-class Jefatura extends Empleado{
+class Jefatura extends Empleado implements Jefes {//implementa la interface Jefes
 
+            
+            
     public Jefatura(String nom, double sue, int agno, int mes, int dia) {
         super(nom,sue,agno,mes,dia);//llama al primer constructor
     
         
+    }
+    
+    
+    @Override
+    public String tomar_decisiones (String decision){//intrface
+        
+        return "Un miembro de la direccion a tomado la decision de: "+decision;
+    }
+    
+    @Override
+    public double establece_bonus(double gratificacion){
+        
+        double prima=2000;//privilejio del jefe 
+        return Trabajadores.bonus_base+gratificacion+prima;
     }
     
     public void estableceIncentivo(double b){//setter

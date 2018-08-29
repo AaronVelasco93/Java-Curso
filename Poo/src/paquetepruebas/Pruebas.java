@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package poo;
+package paquetepruebas;
 
 /**
  *
@@ -18,7 +18,7 @@ public class Pruebas {
         Empleados trabajador3 = new Empleados("Antonio");
         Empleados trabajador4 = new Empleados("Maria");
         
-        trabajador1.cambaSeccion("Informatica");
+        trabajador1.cambiaSeccion("Informatica");
         System.out.println(trabajador1.devuleveDatos());
             
         System.out.println(trabajador2.devuleveDatos());
@@ -52,7 +52,7 @@ class Empleados{
        
     }
     
-    public void cambaSeccion(String seccion){//setter
+    public void cambiaSeccion(String seccion){//setter
         
         this.seccion=seccion;
     
