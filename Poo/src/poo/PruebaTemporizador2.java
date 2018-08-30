@@ -18,6 +18,10 @@ import java.awt.Toolkit;
 public class PruebaTemporizador2 {
     public static void main(String[] args) {
         
+        Relog mireloj = new Relog(3000, true);
+        mireloj.enMarcha();
+        JOptionPane.showMessageDialog(null, "Pulsa aceptar para terminal");
+        System.exit(0);
     }
 }
 
@@ -29,6 +33,29 @@ class Relog{
         this.sonido=sonido;
     }
     
+   public void enMarcha(){
+       ActionListener oyente=new DameLaHora2();
+   
+       Timer mitemporizador = new Timer(intervalo,oyente);
+       mitemporizador.start();
+   }     
     private int intervalo;
     private boolean sonido;
+    
+    private class DameLaHora2 implements ActionListener{
+        
+        @Override
+        public void actionPerformed (ActionEvent evento){
+            Date ahora= new Date();
+            
+            System.out.println("TE pongo la Hora cada 3 seg"+ahora);
+            
+            if(sonido){
+                Toolkit.getDefaultToolkit().beep();
+            
+            }
+        }
+    }
+    
+    
 }
