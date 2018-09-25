@@ -45,6 +45,7 @@ public class Marco_Dialogos extends JFrame {
             
             "ERROR_MESSAGE",
             "INFORMATIO_MESSAGE",
+            "WARNING_MESSAJE",
             "QUESTION_MESSAGE",
             "PLAIN_MESSAGE"
             
@@ -56,7 +57,7 @@ public class Marco_Dialogos extends JFrame {
             "Icono",
             "Componente",
             "Otros",
-            "object[]"
+            "Object[]"
         
         });
         lamina_tipo_opcion = new Lamina_Botones("Confirmar", new String []{
@@ -72,7 +73,7 @@ public class Marco_Dialogos extends JFrame {
             
                 "String[]",
                 "Icon[]",
-                "object[]"
+                "Object[]"
         });
         
         String cuarto[]={"campo_texto","Combo"};
@@ -107,6 +108,68 @@ public class Marco_Dialogos extends JFrame {
         
         
     }
+    //----------------------------------DEVUELVE TIPO ICONO y tambien numero de botones en confirmar--------------------------------------
+    
+    
+    public int dameTipo(Lamina_Botones lamina){
+        
+        String s = lamina.dameSeleccion();
+        
+        if (s.equals("ERROR_MESSGE")|| s.equals("YES_NO_OPTION")){
+            
+            return 0;
+            
+        }else if(s.equals("IFORMATION_MESSAGE") || s.equals("YES_NO_CANCEL_OPTION")){
+        
+            return 1;
+        
+        }else if(s.equals("WARNING_MESSAJE") || s.equals("OK_CANCEL_OPTION")){
+        
+            return 2;
+        }else if (s.equals("QUESTION_MESSAGE")){
+            
+            return 3;
+        }else if (s.equals("PLAIN_MESSAGE")|| s.equals("DEFAULT_OPTION")){
+        
+            return -1;
+        }else{
+        return 0;
+           }
+    }
+    
+    //----------------------------------Da opciones a la lamina opcion---------------------------
+    
+    public Object[] dameOpcions(Lamina_Botones lamina){
+        
+        String s = lamina.dameSeleccion();
+        
+        if(s.equals("String[]")){
+        
+            return new String[]{"Amarillo","Azul","Rojo"};
+        
+        }else if(s.equals("Icon[]")){
+        
+            return new Object[]{new ImageIcon("src/bola_azul.gif"),new ImageIcon("src/bola_roja.gif"),new ImageIcon("src/bola_amarilla.gif")};
+     
+        }else if(s.equals("Object[]")){
+            
+             return new Object[]{cadenaMensaje,
+                    iconoMensaje,
+                    compoeneteMensaje,
+                    objetoMensaje
+            };
+        
+        }
+        
+        else{
+            
+            return null;
+        
+        }
+        
+        
+    }
+    
     
     //----------------------------------PROPORCIONA EL MENSAJE------------------------------------
     
@@ -158,20 +221,27 @@ public class Marco_Dialogos extends JFrame {
             
           if (lamina_tipo.dameSeleccion().equals("Mensaje")){
               
-              JOptionPane.showMessageDialog(Marco_Dialogos.this,dameMensaje(),"Titulo",0);
+              JOptionPane.showMessageDialog(Marco_Dialogos.this,dameMensaje(),"Titulo",dameTipo(lamina_tipo_mensajes));
           
           }else if(lamina_tipo.dameSeleccion().equals("Confirmar")){
           
-              JOptionPane.showConfirmDialog(Marco_Dialogos.this, dameMensaje(),"Titulo",0,0);
+              JOptionPane.showConfirmDialog(Marco_Dialogos.this, dameMensaje(),"Titulo",dameTipo(lamina_tipo_opcion),dameTipo(lamina_tipo_mensajes));
               
           
           }else if(lamina_tipo.dameSeleccion().equals("Entrada")){
               
-              JOptionPane.showInputDialog(Marco_Dialogos.this, dameMensaje(),"Titulo",0);
-          
+              if(lamina_entrada.dameSeleccion().equals("Campo de texto")){
+              
+                JOptionPane.showInputDialog(Marco_Dialogos.this, dameMensaje(),"Titulo",dameTipo(lamina_tipo_mensajes));
+              
+              }else{
+                  
+                  JOptionPane.showInputDialog(Marco_Dialogos.this, dameMensaje(), "Titulo", dameTipo(lamina_tipo_mensajes), null, new String []{"Amarillo","Azul","Rojo"},"Azul");
+              }
+              
           }else if(lamina_tipo.dameSeleccion().equals("Opcion")){
           
-              JOptionPane.showOptionDialog(Marco_Dialogos.this,dameMensaje(),"Titulo",0,0,null,null,null);
+              JOptionPane.showOptionDialog(Marco_Dialogos.this,dameMensaje(),"Titulo",1,dameTipo(lamina_tipo_mensajes),null,dameOpcions(lamina_opciones),null);
           }
         }
     
@@ -193,6 +263,7 @@ public class Marco_Dialogos extends JFrame {
 
 class Lamina_Ejemplo extends JPanel{
     
+    @Override
     public void paintComponent(Graphics g){
     
         super.paintComponents(g);
