@@ -109,6 +109,7 @@ class Empleado implements Comparable, Trabajadores{
     
     }
     
+    @Override
     public double establece_bonus(double gratificacion){
     
         return Trabajadores.bonus_base+gratificacion;

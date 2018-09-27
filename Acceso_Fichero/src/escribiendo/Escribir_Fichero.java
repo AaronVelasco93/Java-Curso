@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package acceso_fichero;
+package escribiendo;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -30,17 +30,18 @@ class Escribiendo{
     
     public void escribir(){
     
-    String frase = "Esto es una prueba de escritura2";
+    String frase = "Esto es una prueba de eaaascritura2";
     
         try {
             
-            FileWriter escritura = new FileWriter("C:/Users/Aaron/Desktop/ejemplo.txt",true);
+        FileWriter escritura;
+        escritura = new FileWriter("C:/Users/Aaron/Desktop/Ejemplo2.txt", true);
             
-            for (int i=0 ; i>frase.length() ;i++){
+            for (int i = 0 ; i<frase.length() ;i++){
             
                 escritura.write(frase.charAt(i));
             }
-           // escritura.close();
+            escritura.close();
             
             
         } catch (IOException ex) {

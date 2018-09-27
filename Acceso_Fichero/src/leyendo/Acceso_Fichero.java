@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package acceso_fichero;
+package leyendo;
 
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -38,26 +39,35 @@ class Leer_Fichero{
         //exepcion para busqueda de un archico de texto
         try {
             
-            FileReader entrada = new FileReader("C:/Users/Aaron/Desktop/ejemplo.txt");
+            entrada = new FileReader("C:/Users/Aaron/Desktop/ejemplo.txt");
             
-            int c = entrada.read();
+            BufferedReader mibuffer = new BufferedReader(entrada);//alaceana en un memoria intermedia el fichero de texto
             
-            while(c!= -1){
-                c = entrada.read();
+            String linea="";
+            
+            while(linea != null){
                 
-                char letra=(char)c;//cateo
-                        System.out.print(letra);
-                                
-            
+                linea=mibuffer.readLine();
+                
+                if (linea!= null)
+                 System.out.println(linea);
+                
             }
-            entrada.close();//un flujo de datos deve ser cerrado siempre
+            //entrada.close();//un flujo de datos deve ser cerrado siempre
         
         } catch (IOException ex) {
         
             System.out.println("No se a encontrado el archivo");
+        }finally{
+        
+            try {
+                entrada.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Leer_Fichero.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     
     }
     
-    
+    FileReader entrada;
 }
