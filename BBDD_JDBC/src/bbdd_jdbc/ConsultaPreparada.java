@@ -28,12 +28,13 @@ public class ConsultaPreparada {
             //2. preparar las consulta
             
             PreparedStatement miSentencia = miConexion.prepareStatement("SELECT NOMBREARTICULO, SECCION, PAISDEORIGEN FROM PRODUCTOS"
-                    + "WHERE SECCION=? AND PAISDEORIGEN=?");
+                    + "WHERE SECCION = ? "
+                    + "AND PAISDEORIGEN = ?");
             
             //3. ESTABLECER LOS PARAMETROS DE CONSULTA
             
-            miSentencia.setString(1, "deportes");
-            miSentencia.setString(2, "USA");
+            miSentencia.setString(1,"deportes");
+            miSentencia.setString(2,"USA");
             
             try ( //4. EJECUTAR Y RECORRER LA CONSULTA
                     ResultSet rst = miSentencia.executeQuery()) {
