@@ -12,6 +12,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import controlador.*;
 
 /**
  *
@@ -60,13 +61,16 @@ public class Marco_Aplicacion2 extends JFrame {
         JButton botonConsulta = new JButton("Consulta");
         
         add(botonConsulta, BorderLayout.SOUTH);
+        botonConsulta.addActionListener(new ControladorBotonEjecuta(this));
+        
+        addWindowListener(new ControladorCargaMenus(this));
 
     }
 
-    private JComboBox secciones;
+    public JComboBox secciones;
 
-    private JComboBox paises;
+    public JComboBox paises;
 
-    private JTextArea resultado;
+    public JTextArea resultado;
 
 }

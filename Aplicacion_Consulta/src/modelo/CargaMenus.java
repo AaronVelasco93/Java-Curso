@@ -4,15 +4,15 @@
  * and open the template in the editor.
  */
 package modelo;
-import controlador.Conexion;
+
 import java.sql.*;
 /**
  *
  * @author Aaron
  */
-public class CargaSecciones {
+public class CargaMenus {
     
-    public CargaSecciones(){
+    public CargaMenus(){
         
         miConexion= new Conexion();
         
@@ -28,16 +28,23 @@ public class CargaSecciones {
             
             Statement secciones= accesoBBDD.createStatement();
             
+            Statement paises= accesoBBDD.createStatement();
+                        
             rs=secciones.executeQuery("SELECT DISTINCTROW SECCION FROM PRODUCTOS");
             
-            while(rs.next()){
+            rs2=paises.executeQuery("SELECT DISTINCTROW PISDEORIGEN FROM PRODUCTOS");
             
-                miProducto = new Productos();
-                miProducto.setSeccion(rs.getString(1));
-                
-                return miProducto.getSeccion();
-            }
+            miProducto = new Productos();
+            
+            miProducto.setSeccion(rs.getString(1));
+            
+            miProducto.setpOrigen(rs2.getString(1));
+            
+            
             rs.close();
+            rs2.close();
+            accesoBBDD.close();
+            
             
         } catch (Exception e) {
         }
@@ -45,8 +52,10 @@ public class CargaSecciones {
         
     }
     
-    Conexion miConexion ;
+    public Conexion miConexion ;
     
-    private ResultSet rs;
+    public ResultSet rs;
+    
+    public ResultSet rs2;
     
 }
