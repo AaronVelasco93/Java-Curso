@@ -1,7 +1,7 @@
 
 package Modelo;
 
-public class Producto {
+public class ModProducto {
     //Declaracion de atriubutos del formulario
     private int id;
     private String codigo;

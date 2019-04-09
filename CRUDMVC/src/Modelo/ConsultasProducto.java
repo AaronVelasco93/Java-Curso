@@ -6,10 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 //Hereda de conexion para poder realizar las consultas y usar la conexion 
-public class ConsultasProducto extends Conexion {
+public class ConsultasProducto extends ModConexion {
 
-    //Metodo Registrar Producto
-    public boolean registrar(Producto pro) {
+    //Metodo Registrar ModProducto
+    public boolean registrar(ModProducto pro) {
         
         PreparedStatement ps = null;
         
@@ -41,8 +41,8 @@ public class ConsultasProducto extends Conexion {
         }
     }
     
-    //Metodo Modficar Producto
-    public boolean modificar(Producto pro) {
+    //Metodo Modficar ModProducto
+    public boolean modificar(ModProducto pro) {
         PreparedStatement ps = null;
         Connection con = getConexion();
 
@@ -73,7 +73,7 @@ public class ConsultasProducto extends Conexion {
     }
 
     //Metodo Eliminar producto
-    public boolean eliminar(Producto pro) {
+    public boolean eliminar(ModProducto pro) {
         
         PreparedStatement ps = null;
         
@@ -100,8 +100,9 @@ public class ConsultasProducto extends Conexion {
             }
         }
     }
-    //Metodo de Busqueda de Producto
-    public boolean buscar(Producto pro) {
+    
+    //Metodo de Busqueda de ModProducto
+    public boolean buscar(ModProducto pro) {
         PreparedStatement ps = null;
         ResultSet rs = null;
         

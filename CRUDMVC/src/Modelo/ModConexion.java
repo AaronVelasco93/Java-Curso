@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Conexion {
+public class ModConexion {
     
     private final String base = "tienda";
     private final String user = "root";
@@ -27,7 +27,7 @@ public class Conexion {
             System.err.println(e);//en caso de error
             
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModConexion.class.getName()).log(Level.SEVERE, null, ex);
         }
       return con;//se retorna la variable de la cinexion
     }

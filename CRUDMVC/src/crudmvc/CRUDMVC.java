@@ -7,13 +7,10 @@ package crudmvc;
 
 import Controlador.CtrlProducto;
 import Modelo.ConsultasProducto;
-import Modelo.Producto;
-import Vista.Form;
+import Modelo.ModProducto;
+import Vista.vistaForm;
 
-/**
- *
- * @author Aaron
- */
+
 public class CRUDMVC {
 
     /**
@@ -21,9 +18,9 @@ public class CRUDMVC {
      */
     public static void main(String[] args) {
       
-        Producto mod = new Producto();
+        ModProducto mod = new ModProducto();
         ConsultasProducto modC = new ConsultasProducto();
-        Form frm = new Form();
+        vistaForm frm = new vistaForm();
         
         CtrlProducto ctrl = new CtrlProducto(mod, modC, frm);
         ctrl.iniciar();
