@@ -8,11 +8,11 @@ package crudmvc;
 import Controlador.CtrlProducto;
 import Modelo.ConsultasProducto;
 import Modelo.Producto;
-import Vista.frmProducto;
+import Vista.Form;
 
 /**
  *
- * @author Marko
+ * @author Aaron
  */
 public class CRUDMVC {
 
@@ -23,7 +23,7 @@ public class CRUDMVC {
       
         Producto mod = new Producto();
         ConsultasProducto modC = new ConsultasProducto();
-        frmProducto frm = new frmProducto();
+        Form frm = new Form();
         
         CtrlProducto ctrl = new CtrlProducto(mod, modC, frm);
         ctrl.iniciar();

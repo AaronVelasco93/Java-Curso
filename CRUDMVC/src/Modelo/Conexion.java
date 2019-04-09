@@ -11,24 +11,25 @@ public class Conexion {
     
     private final String base = "tienda";
     private final String user = "root";
-    private final String password = "1234";
+    private final String password = "";
     private final String url = "jdbc:mysql://localhost:3306/" + base;
-    private Connection con = null;
+    private Connection con = null;//variable que va a guardar la conexion
     
     public Connection getConexion()
     {
         
         try{
-            Class.forName("com.mysql.jdbc.Driver");
-            con = (Connection) DriverManager.getConnection(this.url, this.user, this.password);
+            Class.forName("com.mysql.jdbc.Driver");//Ruta del driver
+            con = (Connection) DriverManager.getConnection(this.url, this.user, this.password);//Realizacion de la conexion y se mandan los parametros
             
         } catch(SQLException e)
         {
-            System.err.println(e);
+            System.err.println(e);//en caso de error
+            
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
-      return con;  
+      return con;//se retorna la variable de la cinexion
     }
 
 }

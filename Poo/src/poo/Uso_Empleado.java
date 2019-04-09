@@ -18,22 +18,7 @@ public class Uso_Empleado {
     public static void main(String[] args) {
         
         
-       /** Empleado empleado1 = new Empleado("Aaron", 85000, 2018, 05, 12);
-       Empleado empleado2 = new Empleado("Ana", 56000, 2017, 06, 02);
-       Empleado empleado3 = new Empleado("Jona", 58000, 2013, 12, 25);
-       
-       empleado1.subeSueldo(5);
-       empleado2.subeSueldo(5);
-       empleado3.subeSueldo(5);
-       
-       System.out.println("Nombre: "+empleado1.dameNombre()+" Sueldo: "+empleado1.dameSueldo()
-        +" Fecha de alta: "+empleado1.dameFechaContrato());
-        
-       System.out.println("Nombre: "+empleado2.dameNombre()+" Sueldo: "+empleado2.dameSueldo()
-        +" Fecha de alta: "+empleado2.dameFechaContrato());
-       
-       System.out.println("Nombre: "+empleado3.dameNombre()+" Sueldo: "+empleado3.dameSueldo()
-        +" Fecha de alta: "+empleado3.dameFechaContrato()); */
+      
        
        Jefatura jefe_RRHH = new Jefatura("Felipe", 55000, 2018, 12, 21);
        

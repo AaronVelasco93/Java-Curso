@@ -2,13 +2,14 @@
 package Modelo;
 
 public class Producto {
-    
+    //Declaracion de atriubutos del formulario
     private int id;
     private String codigo;
     private String nombre;
     private Double precio;
     private int cantidad;
 
+    //Metodos de acceso seters y geters
     public int getId() {
         return id;
     }

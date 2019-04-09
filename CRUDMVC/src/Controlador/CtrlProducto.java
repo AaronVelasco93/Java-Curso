@@ -2,7 +2,7 @@ package Controlador;
 
 import Modelo.ConsultasProducto;
 import Modelo.Producto;
-import Vista.frmProducto;
+import Vista.Form;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -11,9 +11,10 @@ public class CtrlProducto implements ActionListener {
 
     private Producto mod;
     private ConsultasProducto modC;
-    private frmProducto frm;
+    private Form frm;
 
-    public CtrlProducto(Producto mod, ConsultasProducto modC, frmProducto frm) {
+    //Contructor 
+    public CtrlProducto(Producto mod, ConsultasProducto modC, Form frm) {
         this.mod = mod;
         this.modC = modC;
         this.frm = frm;
